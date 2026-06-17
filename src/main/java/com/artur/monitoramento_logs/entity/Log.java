@@ -10,11 +10,13 @@ public class Log {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    private String user;
+    private String action;
+    private String ip;
+    private String module;
+    private String status;
     private String level;
-
     private String message;
-
     private LocalDateTime timestamp;
 
     public Log() {}
