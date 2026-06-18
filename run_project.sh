@@ -31,9 +31,6 @@ sudo PGPASSWORD=ph12345 psql -U postgres -h localhost -d logdb -c "TRUNCATE TABL
 
 # 4. Iniciar o Spring Boot em segundo plano
 echo "[3/4] Iniciando a API Spring Boot (rodando em background)..."
-# O output do Spring Boot é salvo em 'api.log' para não poluir o terminal do Logstash
-nohup ./start.sh > api.log 2>&1 &
-SPRING_PID=$!
 
 # 5. Iniciar o Logstash
 echo "[4/4] Iniciando o Logstash..."
