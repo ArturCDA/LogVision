@@ -37,3 +37,11 @@ build/
 
 ### logastash/data ###
 logastash/data/
+.last_run
+.*_run
+
+### Ignorar os arquivos de log ###
+*.log
+
+### Logs processados e salvos em arquivo .json ###
+logs_processados.json
