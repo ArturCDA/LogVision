@@ -19,7 +19,8 @@ public class LogController {
 
     @PostMapping
     public Log salvar(@RequestBody Log log) {
-        return service.salvar(log);
+        Log logSalvo = service.salvar(log);
+        return logSalvo;
     }
 
     @GetMapping
