@@ -10,7 +10,7 @@ public class Log {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String user;
+    private String userName;
     private String action;
     private String ip;
     private String module;
