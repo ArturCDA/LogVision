@@ -38,5 +38,20 @@
   { "nivel_log": "ERROR", "mensagem_log": "Falha ao carregar arquivo de configurações de região." },
   { "nivel_log": "INFO", "mensagem_log": "Worker de processamento assíncrono finalizou a fila pendente." },
   { "nivel_log": "WARN", "mensagem_log": "Múltiplas requisições simultâneas detectadas do mesmo IP (Possível ataque DDoS)." },
-  { "nivel_log": "FATAL", "mensagem_log": "Sistema entrou em modo de segurança após detectar falhas críticas no armazenamento." }
+  { "nivel_log": "FATAL", "mensagem_log": "Sistema entrou em modo de segurança após detectar falhas críticas no armazenamento." },
+  { "nivel_log": "INFO", "mensagem_log": "Serviço de mensageria da aplicação inicializado com sucesso." },
+  { "nivel_log": "INFO", "mensagem_log": "Novo usuário registrado no sistema com o email pedro.pontes@logvision.com.br." },
+  { "nivel_log": "WARN", "mensagem_log": "Alerta: Uso de CPU atingiu 85% no container de processamento principal." },
+  { "nivel_log": "ERROR", "mensagem_log": "Falha na conexão com o banco de dados postgres na porta 5432." },
+  { "nivel_log": "FATAL", "mensagem_log": "Queda de energia causou corrupção na tabela de transações financeiras." },
+  { "nivel_log": "INFO", "mensagem_log": "Token de autenticação gerado para o cliente artur.andrade@meudominio.com." },
+  { "nivel_log": "WARN", "mensagem_log": "Aviso: Espaço em disco na partição de arquivos está em 92%." },
+  { "nivel_log": "ERROR", "mensagem_log": "Acesso negado: senha incorreta ou credenciais inválidas para o login admin." },
+  { "nivel_log": "INFO", "mensagem_log": "Relatório de vendas mensal exportado pelo sistema com sucesso." },
+  { "nivel_log": "WARN", "mensagem_log": "Tempo de resposta da API excedeu 2000ms na rota de relatórios." },
+  { "nivel_log": "FATAL", "mensagem_log": "Memória RAM esgotada (Out of Memory Error). O sistema será reiniciado." },
+  { "nivel_log": "ERROR", "mensagem_log": "Erro de sintaxe SQL ao tentar atualizar os registros de clientes." },
+  { "nivel_log": "INFO", "mensagem_log": "Recuperação de credenciais solicitada pelo endereço maria.oliveira@teste.com." },
+  { "nivel_log": "WARN", "mensagem_log": "Múltiplas tentativas de acesso à porta 22 bloqueadas pelo firewall." },
+  { "nivel_log": "INFO", "mensagem_log": "Backup da base de dados concluído com êxito às 02:00 AM." }
 ]
