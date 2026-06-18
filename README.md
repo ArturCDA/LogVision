@@ -38,6 +38,7 @@ Dashboard Bootstrap
 monitoramento-logs/
 
 ├── .mvn/
+├── logstash/data/
 ├── src/
 ├── .env
 ├── .env.example
@@ -46,17 +47,22 @@ monitoramento-logs/
 ├── mvnw.cmd
 ├── pom.xml
 ├── README.md
-└── start.sh
+├── run_project.sh
+├── testar_api.sh
+└── testes_log.json
 ```
 
-## Pré-requisitos
+## 🛠️ Pré-requisitos do Sistema
 
-Antes de executar o projeto, certifique-se de possuir os seguintes requisitos instalados:
+Antes de iniciar, certifique-se de ter as seguintes ferramentas instaladas e configuradas na sua máquina (Ambiente Linux):
 
-* Java 21
-* Git
-* PostgreSQL
-* Logstash
+* **Java 17+** (gerenciado via Maven/pom.xml)
+* **PostgreSQL:** Deve estar em execução na porta `5432`.
+    * **Banco de dados:** `logsdb`
+    * **Usuário:** `postgres`
+    * **Senha:** `sua_senha_aqui`
+* **Logstash (Elastic Stack):** Instalado no diretório padrão `/usr/share/logstash/bin/logstash`.
+* **cURL:** Para rodar o script de testes automatizados.
 
 ### Verificando a instalação do Java
 
@@ -124,132 +130,22 @@ spring.datasource.username=${DB_USER}
 spring.datasource.password=${DB_PASSWORD}
 ```
 
-## Executando o Projeto
+## 🚀 Como Executar o Projeto
 
-Clone o repositório:
-
-```bash
-git clone https://github.com/ArturCDA/LogVision.git
-```
-
-Acesse a pasta do projeto:
-
-```bash
-cd monitoramento-logs
-```
-
-Execute o script de inicialização:
-
-```bash
-./start.sh
-```
-
-Se o arquivo `.env` ainda não existir, ele será criado automaticamente e o script será encerrado.
-
-Edite o arquivo:
-
-```bash
-nano .env
-```
-
-Configure as variáveis e execute novamente:
-
-```bash
-./start.sh
-```
-
-O script realiza automaticamente as seguintes etapas:
-
-1. Verifica se o Java está instalado;
-2. Verifica se o arquivo `.env` existe;
-3. Carrega as variáveis de ambiente;
-4. Valida as configurações obrigatórias;
-5. Inicia a aplicação utilizando o Maven Wrapper.
-
-A aplicação será iniciada em:
-
-```text
-http://localhost:8080
-```
-
-## Maven Wrapper
-
-O projeto utiliza o Maven Wrapper (`mvnw`).
-
-Portanto, não é necessário instalar o Maven manualmente.
-
-O Wrapper fará o download automático da versão correta do Maven na primeira execução.
-
-## Endpoints da API
-
-### Criar um log
-
-```http
-POST /logs
-```
-
-Exemplo de requisição:
-
-```json
-{
-  "level": "ERROR",
-  "message": "Falha ao conectar ao banco de dados"
-}
-```
-
-### Listar logs
-
-```http
-GET /logs
-```
-
-## Testando com o Postman
-
-Envie uma requisição para:
-
-```text
-POST http://localhost:8080/logs
-```
-
-Com o seguinte corpo:
-
-```json
-{
-  "level": "INFO",
-  "message": "Usuário autenticado com sucesso"
-}
-```
-
-## Configuração do Logstash
-
-Crie um arquivo de configuração chamado `logstash.conf`:
-
-```conf
-input {
-  jdbc {
-    jdbc_driver_class => "org.postgresql.Driver"
-    jdbc_connection_string => "jdbc:postgresql://localhost:5432/logdb"
-    jdbc_user => "postgres"
-    jdbc_password => "sua_senha"
-
-    statement => "SELECT * FROM logs"
-
-    schedule => "* * * * *"
-  }
-}
-
-output {
-  stdout {
-    codec => rubydebug
-  }
-}
-```
-
-Execute o Logstash:
-
-```bash
-/usr/share/logstash/bin/logstash -f logstash.conf
-```
+1. Clone este repositório.
+2. Dê permissão de execução para os scripts:
+   \`\`\`bash
+   chmod +x run_project.sh testar_api.sh start.sh
+   \`\`\`
+3. Inicie o pipeline completo (API, Banco e Logstash) com um único comando:
+   \`\`\`bash
+   ./run_project.sh
+   \`\`\`
+4. Em um novo terminal, dispare os testes simulados (substitui o Postman):
+   \`\`\`bash
+   ./testar_api.sh
+   \`\`\`
+5. Verifique o arquivo gerado \`logs_processados.json\` no diretório raiz.
 
 ## Dashboard
 
