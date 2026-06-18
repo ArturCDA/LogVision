@@ -34,3 +34,6 @@ build/
 
 ### Variáveis de Ambiete ###
 .env
+
+### logastash/data ###
+logastash/data/
